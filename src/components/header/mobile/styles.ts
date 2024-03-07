@@ -25,7 +25,7 @@ export const MobileMenuContainer = styled.div`
 
   li {
     color: white;
-    margin-bottom: 1rem;
+
   }
 
   a {

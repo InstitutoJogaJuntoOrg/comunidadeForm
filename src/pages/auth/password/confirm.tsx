@@ -15,6 +15,7 @@ import {
 } from "../../../schema/newPassword";
 import { BiShow } from "react-icons/bi";
 
+
 export const NewPassword = () => {
   const [uid, setUuid] = useState<string>('');
   const [token, setToken] = useState<string>('');
@@ -57,7 +58,7 @@ export const NewPassword = () => {
       password: data.password,
       confirmPassword: data.confirmPassword,
     };
-    // const url = ;
+
     axios
       .post(`${import.meta.env.VITE_API_URL}/password_reset/${uid}/${token}/`, requestData)
       .then((response) => {

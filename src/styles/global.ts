@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 .responsiveProva {
   label {
     @media only screen and (max-width : 600px) {
-      padding: 3rem 0rem!important
+      padding: 3rem 0.9rem!important
   }
   }
 }
@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   .hLabel {
     height: 2rem;
+    max-width: 600px;
   }
   .p-dialog-title {
     color: black;
@@ -92,13 +93,36 @@ export const GlobalStyle = createGlobalStyle`
   #adopt-accept-all-button {
     background-color: rgb(114, 182, 90)!important;
   }
+  .containerAll2 {
+position: relative;
+
+  }
+  .containerAll {
+    height: calc(100vh - 93px);
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    }
+    .vector {
+    position: absolute;
+    bottom: -1%;
+    left: 0;
+
+}
+.vector2 {
+  position: absolute;
+  top: 0;
+    right: 0;
+}
   label {
     display: flex;
     align-items: flex-end;
     font-weight: 400;
     color: white;
 
-    padding: 1.4rem 0rem;
+    padding: 1rem 0rem;
     justify-content: center;
     align-content: flex-start;
     flex-direction: column;
@@ -125,7 +149,12 @@ export const GlobalStyle = createGlobalStyle`
   .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
     color: black;
   }
-
+  .titleForm {
+    margin-top: 4rem;
+    font-size: 4rem;
+    font-weight: 900;
+    color: black;
+  }
   .p-tabview .p-tabview-panels {
     background: transparent;
   }
@@ -133,8 +162,11 @@ export const GlobalStyle = createGlobalStyle`
     background-color: transparent;
   }
   .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-    background-color: #54993a!important;
-    color: white;
+    background-color: #191919!important;
+    color: #FCD700;
+  }
+  .buttonYellow {
+    background-color: #FCD700;
   }
   #pr_id_1_header_0:hover {
     color: white;
@@ -154,7 +186,7 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
   }
   .p-tabview .p-tabview-nav .p-tabview-ink-bar {
-    background-color: #54993a!important;
+    background-color: #FCD700!important;
   }
   .p-tabview .p-tabview-nav li .p-tabview-nav-link {
     padding: 1rem 3rem;
@@ -202,4 +234,5 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 13px;
   }
   }
+  
 `;

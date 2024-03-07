@@ -48,6 +48,13 @@ export const SocioeconomicoSchema = z.object({
       .any({
         required_error: "messages.required",
       }),
+
+      schollPublic: z
+      .any({
+        required_error: "messages.required",
+      }),
+
+
      
       income: z.string({
         required_error: "messages.required",

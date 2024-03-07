@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
 margin-top: 1rem;
-    background-color: #588b46;
+    background-color: #FCD700;
     padding: 1rem;
-    color: white;
+    color: #000;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@ margin-top: 1rem;
     
     .limitedTime {
         font-weight: 600;
-        color: #ffc1c1
+        color: #000
 ;
     }
 `

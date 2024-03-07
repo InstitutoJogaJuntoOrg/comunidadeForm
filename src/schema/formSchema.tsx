@@ -5,7 +5,7 @@ export const FormSchema = z.object({
   socialName: z.string(),
   first_name: z.string().min(1, "Campo obrigatório"),
   last_name: z.string().min(1, "Campo obrigatório"),
-  city: z.string().min(1, "Campo obrigatório"),
+  city: z.string().min(4, "Campo obrigatório"),
   cpf: z
     .string({
       required_error: "messages.required",

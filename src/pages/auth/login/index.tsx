@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Footer } from "../../../components/footer";
+
 export const LoginPage = () => {
   const { register, handleSubmit } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginFormSchema),
@@ -23,9 +24,19 @@ export const LoginPage = () => {
         `${import.meta.env.VITE_API_URL}/users/login/`,
         { email: data.email, password: data.password }
       );
+
       console.log(data.email);
       if (response.status === 200) {
-        localStorage.setItem("email", email);
+        if (response.data.project != "comunidade") {
+          alert(
+            "Sua conta não está configurada corretamente. Por favor, contate o suporte: 5511945950731"
+          );
+          localStorage.clear(); // Remova todos os itens do localStorage
+          window.location.reload();
+          return;
+        }
+
+        localStorage.setItem("email", data.email); // Use data.email em vez de email
         console.log("logado");
         setData(response.data);
         localStorage.setItem("token", response.data.access);
@@ -62,87 +73,115 @@ export const LoginPage = () => {
   console.log(data);
 
   return (
-    <>
+   <div>
+     <div className="containerAll">
+              <div className="vector">
+          <img src="/Vector.png" alt="" />
+        </div>
+        <div className="vector2">
+          <img src="/Vector2.png" alt="" />
+        </div>
       <Container>
+      <br />
+      <br />
         <ToastContainer />
-        <h1>Login</h1>
-        <div className="h">
-          <form
-            onSubmit={handleSubmit(handleSubmitLogin)}
+
+        <div className="background-div"></div>
+      
+        <form
+        className="margintop"
+          onSubmit={handleSubmit(handleSubmitLogin)}
+          style={{
+            width: "30rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <h1>Login</h1>
+          <FormField>
+            <label>Email</label>
+            <InputText
+              id="email"
+              {...register("email")}
+              onChange={(e) => setEmail(e.target.value)}
+              aria-describedby="email-help"
+              placeholder="Email"
+              value={email}
+            />
+          </FormField>
+
+          <FormField>
+            <label>Senha</label>
+            <InputText
+              id="password"
+              {...register("password")}
+              aria-describedby="password-help"
+              placeholder="Senha"
+              type="password"
+            />
+          </FormField>
+
+          <div
             style={{
-              width: "30rem",
+              marginTop: "1rem",
+              color: "white",
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
             }}
           >
-            <FormField>
-              <label>Email</label>
-              <InputText
-                id="email"
-                {...register("email")}
-                onChange={(e) => setEmail(e.target.value)}
-                aria-describedby="email-help"
-                placeholder="Email"
-                value={email}
-              />
-            </FormField>
-
-            <FormField>
-              <label>Senha</label>
-              <InputText
-                id="password"
-                {...register("password")}
-                aria-describedby="password-help"
-                placeholder="Senha"
-                type="password"
-              />
-            </FormField>
-
-            <div
-              style={{
-                marginTop: "1rem",
-                color: "white",
-                width: "100%",
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "flex-end",
-              }}
-            >
-              <Register>
-                <span className="">
-                  <span>
-                    <Link
-                      to={"/reset"}
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      Esqueci minha senha
-                    </Link>
-                  </span>
+            <Register>
+              <span className="">
+                <span>
+                  <Link
+                    to={"/reset"}
+                    style={{
+                      textDecoration: "underline",
+                      color: "white",
+                      marginLeft: "1%",
+                      position: "absolute",
+                    }}
+                  >
+                    Esqueci minha senha
+                  </Link>
                 </span>
-              </Register>
-            </div>
+              </span>
+            </Register>
+          </div>
 
-            <button
-              style={{
-                fontSize: "16px",
-                borderRadius: "26px",
-              }}
-              type="submit"
-            >
-              Fazer login
-            </button>
-            <br />
-            <br />
-          </form>
-
+          <button
+            style={{
+              fontSize: "16px",
+              borderRadius: "26px",
+            }}
+            type="submit"
+          >
+            Login
+          </button>
+          <br />
           <Register>
             <h3>Ainda não tem uma conta?</h3>
             <span className="register">
-              <Link to={"/register"}>Clique aqui e registre-se</Link>
+              <Link
+                to={"/register"}
+                style={{
+                  color: "white",
+                }}
+              >
+                Clique aqui e registre-se
+              </Link>
             </span>
           </Register>
-        </div>
+        </form>
       </Container>
 
-      <Footer />
-    </>
+   
+    </div>
+    <Footer />
+   </div>
   );
 };

@@ -44,17 +44,20 @@ export const Header = () => {
   return (
     <HeaderContainer className={showLinks ? "show-links" : ""}>
       <nav>
-        <Link to={"/"}>
+        <a target="_blank" href={"https://www.jogajuntoinstituto.org/"}>
           <img
-            src="https://cdn.discordapp.com/attachments/566850308702208001/1146230197813788702/Vector_1.png"
-            alt="ilhabela prefeitura"
+            style={{
+              width: "150px",
+              borderRadius: "",
+            }}
+            src="https://www.jogajuntoinstituto.org/image/Logo_about.png"
+            alt="Instituto Joga Junto"
           />
-        </Link>
+        </a>
         <ul className={windowWidth <= 1000 && showLinks ? "hidden" : ""}>
-          <StyledNavLink to={"/"}>Home</StyledNavLink>
-          {/* {!emailFromLocalStorage && (
-            <StyledNavLink to="/login">Fazer login</StyledNavLink>
-          )} */}
+          {!emailFromLocalStorage && (
+            <StyledNavLink to="/login">Login</StyledNavLink>
+          )}
 
           {emailFromLocalStorage && <MyDropdown />}
 
@@ -63,10 +66,18 @@ export const Header = () => {
               Inscrição
             </StyledNavLink>
           )}
-           {/* <li><a style={{
-            textDecoration: 'none',
-            color: '#54993a'
-           }} href="https://wa.me/5511945950731" target={"_blank"}>Ajuda</a></li> */}
+          <li>
+            <a
+              style={{
+                textDecoration: "none",
+                color: "#000",
+              }}
+              href="https://wa.me/5511945950731"
+              target={"_blank"}
+            >
+              Ajuda
+            </a>
+          </li>
         </ul>
         <div className="hamburger-icon" onClick={toggleLinks}>
           {showLinks ? <FaTimes /> : <FaBars />}

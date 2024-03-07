@@ -69,7 +69,7 @@ export const Prova = () => {
   console.log(errors);
   return (
     <Container>
-      <form onSubmit={handleSubmit(handleForm)} className="boxSh responsiveProva">
+      <form onSubmit={handleSubmit(handleForm)} className=" responsiveProva">
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             1: O computador é uma máquina destinada ao processamento de dados,
@@ -133,7 +133,7 @@ export const Prova = () => {
             Nenhuma das alternativas
           </label>
         </div>
-
+<br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             2: Um aplicativo, também conhecido como app (do inglês application)
@@ -199,7 +199,7 @@ export const Prova = () => {
             Google Chrome, Safari e Microsoft Edge
           </label>
         </div>
-
+<br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             3: Já faz algum tempo que a internet se tornou uma ferramenta
@@ -265,7 +265,7 @@ export const Prova = () => {
             Algoritmo
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             4: Seguindo a definição encontrada em um dicionário, o termo
@@ -337,7 +337,7 @@ export const Prova = () => {
             Nenhuma das alternativas.
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             5: Em Tecnologia da Informação (TI), os projetos englobam soluções
@@ -403,7 +403,7 @@ export const Prova = () => {
             Nenhuma das alternativas.
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             6: O Scrum é um sistema ágil de gerenciamento de projetos comumente
@@ -467,7 +467,7 @@ export const Prova = () => {
             Nenhuma das alternativas.
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             7: Partindo do pressuposto que todo software precisa preencher
@@ -529,7 +529,7 @@ export const Prova = () => {
             Melhorar a colaboração entre equipes
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             8: Para que um computador, notebook ou celular possam executar todas
@@ -594,7 +594,7 @@ export const Prova = () => {
             Linux Ubuntu e iOS
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             9: Uma das comodidades proporcionadas pela internet, seja para
@@ -658,7 +658,7 @@ export const Prova = () => {
             Upload e link
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             10: No mercado de tecnologia, notamos cada vez mais a preferência de
@@ -724,7 +724,7 @@ export const Prova = () => {
             Nenhuma das opções
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             11: O profissional de TI (tecnologia da informação) possui uma vasta
@@ -788,7 +788,7 @@ export const Prova = () => {
             UX Design e UI Design
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             12: Complete a sentença com o próximo elemento da sequência 1, 1, 2,
@@ -849,7 +849,7 @@ export const Prova = () => {
             13
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             13: Complete a sentença com o próximo elemento da sequência 0, 1, 4,
@@ -910,7 +910,7 @@ export const Prova = () => {
             89
           </label>
         </div>
-
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
             14: Um algoritmo é uma sequência finita e ordenada de ações
@@ -930,6 +930,8 @@ export const Prova = () => {
             src="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/prova.jpg"
             alt="img prova"
           />
+            <br />
+            <br />
           <label className="hLabel" htmlFor="q14-option1">
             <input
               className="inputWidth"
@@ -941,7 +943,7 @@ export const Prova = () => {
             2 - colocar o estepe; 6 - ligar o carro e voltar à sua rota; 10 -
             pegar as ferramentas necessárias.
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q14-option2">
             <input
               className="inputWidth"
@@ -953,7 +955,7 @@ export const Prova = () => {
             2 - pegar as ferramentas necessárias; 6 - colocar o estepe; 10 -
             ligar o carro e voltar à sua rota.
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q14-option3">
             <input
               className="inputWidth"
@@ -965,7 +967,7 @@ export const Prova = () => {
             2 - ligar o carro e voltar à sua rota; 6 - pegar as ferramentas
             necessárias; 10 - colocar o estepe.
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q14-option4">
             <input
               className="inputWidth"

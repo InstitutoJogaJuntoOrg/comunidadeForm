@@ -8,6 +8,7 @@ import { FaSquareWhatsapp } from "react-icons/fa6";
 
 import {
   About,
+  BannerContainer,
   ContainerCardLayout,
   ContainerHome,
   ContainerTitle,
@@ -16,6 +17,8 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Footer } from "../../components/footer";
+import { Modules } from "../../components/modules/modules";
+import FAQs from "./components/FAQ/faq";
 // import { Cookies } from "js-cookie"; // Importe a biblioteca
 
 const Overlay = styled.div`
@@ -66,9 +69,10 @@ export const HomePage = () => {
     const hasVisitedHomePage = localStorage.getItem("final");
 
     if (hasVisitedHomePage) {
-      setDisplay(true);
+      setDisplay(false);
     } else {
       localStorage.setItem("final", "true");
+      setDisplay(false);
     }
   }, []);
 
@@ -109,7 +113,10 @@ export const HomePage = () => {
             onHide={canceldelete}
             header=""
             footer={
-              <a href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/lista_CR_ILHABELATECH.pdf" target={"_blank"}>
+              <a
+                href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/lista_CR_ILHABELATECH.pdf"
+                target={"_blank"}
+              >
                 <ModalHome className="modalHomepage"></ModalHome>
               </a>
             }
@@ -119,7 +126,12 @@ export const HomePage = () => {
       <ContainerHome>
         <ImageContainer>
           <VideoBackground>
-            <Video src={video} autoPlay muted loop />
+            <Video
+              src="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/JogaJunto_Ilhabela.mp4"
+              autoPlay
+              muted
+              loop
+            />
           </VideoBackground>
           <Overlay
             onMouseOver={() => setShowText(true)}
@@ -138,7 +150,7 @@ export const HomePage = () => {
         <section>
           <ContainerTitle className="InitialMessage">
             <h1 style={{ textShadow: "14px 14px 18px rgba(0, 0, 0, 10.5)" }}>
-              ILHABELA TECH
+              ILHABELA TEaaaaaaaaaaaaaaaaaaCH
             </h1>
             {/* <span
               className="subDescp"
@@ -148,34 +160,58 @@ export const HomePage = () => {
             </span> */}
             <Link
               style={{ textShadow: "14px 14px 18px rgba(0, 0, 0, 10.5)" }}
-              to={"https://estaticos-ijj.s3.sa-east-1.amazonaws.com/lista_CR_ILHABELATECH.pdf"} target={"_blank"}
+              to={
+                "/inscricao"
+              }
+       
             >
-              <button>Confira as vagas remanescentes</button>
+              <button>Inscreva-se</button>
             </Link>
           </ContainerTitle>
         </section>
         <ContainerCardLayout>
           <CardOne
-            description="
-            Ilhabela Tech é um programa da Prefeitura de Ilhabela em parceria com a ONG Instituto Joga Junto que visa capacitar e incluir, prioritariamente, jovens de baixa renda, entre 17 e 24 anos, residentes na Ilhabela, beneficiários do CadÚnico, provenientes de escola pública, no universo da tecnologia."
+            description={`
+            É um programa da Prefeitura de Ilhabela em parceria com o Instituto Joga Junto que visa capacitar e incluir novos profissionais no mercado tecnológico por meio do conhecimento técnico de testador de Qualidade de Sofware (Q.A)`}
             className="secondImg"
-            titleCard="O que é"
-            image="https://cdn.discordapp.com/attachments/566850308702208001/1146214276537786438/Group.png"
+            titleCard="O que é o Ilhabela tech:"
+            image="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/card_ilhabela_bannerlogo.png"
             key={2}
             alt="img"
           />
           <CardTwo
             description=""
-            titleCard="O programa"
-            image="https://cdn.discordapp.com/attachments/566850308702208001/1146220725309546546/Rectangle_28.png"
+            titleCard="O que é um testador de qualidade de software"
+            image="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/card_ilhabela_IETEC.png"
             key={1}
             alt="img"
           />
         </ContainerCardLayout>
+
+        <BannerContainer>
+          <img src="/banner.svg" style={{
+            display: 'block',
+          }} alt="icon" />
+        </BannerContainer>
+
+        <div
+          style={{
+            display: "flex",
+            alignContent: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+
+            alignItems: "center",
+            gap: "2rem",
+          }}
+        >
+          <Modules />
+        </div>
         <About>
           <h1>Como participar</h1>
           <StepsHome />
         </About>
+        <FAQs />
         <Footer />
       </ContainerHome>
     </div>

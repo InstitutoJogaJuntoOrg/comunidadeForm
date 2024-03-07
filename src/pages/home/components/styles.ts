@@ -15,7 +15,7 @@ export const ContainerCard = styled.div`
 
   @media (max-width: 900px) {
     width: 320px;
-    height: 400px;
+    height: 300px;
     flex-direction: column;
     align-items: center;
   }
@@ -34,7 +34,7 @@ export const StepsContainer = styled.div`
     width: 5rem !important;
     height: 5rem !important;
     font-size: 3rem;
-    color: #54993a;
+    color: #FCD700;
     font-weight: 900;
   }
   .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
@@ -73,7 +73,7 @@ export const StepsContainer = styled.div`
 
 export const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -81,21 +81,28 @@ export const CardsContainer = styled.div`
   justify-items: center;
   align-items: center;
 
-  @media (max-width: 775px) {
+  @media (max-width: 875px) {
+    grid-template-columns: repeat(1, 3fr);
+  }
+    @media (max-width: 975px) {
     grid-template-columns: repeat(1, 3fr);
   }
   div {
     padding: 2rem;
     margin-top: 22px;
-    background-color: #54993a;
+
+    background-color: #FCD700;
     max-width: 20rem;
+    background-color: #54993a;
+    max-width: 15rem;
+
     text-align: left;
     border-radius: 22px;
     display: flex;
     align-items: center;
     p {
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       @media (max-width: 1000px) {
         font-size: 1.2rem;
         padding: 1rem 1rem;
@@ -114,6 +121,7 @@ export const ImageWrapper = styled.div`
   img {
     width: 100%;
     height: 100%;
+    scale:1.7;
     object-fit: cover;
   }
 `;
@@ -127,11 +135,12 @@ export const OpacityOverlay = styled.div`
   background: linear-gradient(
     0deg,
     rgba(23, 23, 23, 0.91) 0%,
-    #54993a 0%,
+    #FCD700 0%,
     rgba(255, 255, 255, 0) 100%
   );
   .titletwo {
     @media (max-width: 900px) {
+
       font-size: 0.7rem!important;
     }
   }
@@ -142,6 +151,7 @@ export const OpacityOverlay = styled.div`
   transition: 1s linear;
   .tiitlecard {
     font-size: 1.2rem;
+    font-weight: 400;
     @media (max-width: 900px) {
       font-size: 0.7rem;
     }
@@ -182,9 +192,9 @@ export const OpacityOverlay = styled.div`
   }
   .titleOpacity {
     position: absolute;
-    top: 85%;
+    top: 80%;
     left: 10%;
-    font-size: 40px;
+    font-size: 34px;
     font-style: normal;
     font-weight: 800;
     color: white;
@@ -192,9 +202,9 @@ export const OpacityOverlay = styled.div`
 
 
     @media (max-width: 900px) {
-      top: 80%;
-      left: 10%;
-      font-size: 30px;
+      top:76%;
+      left: 5%;
+      font-size: 24px;
     }
   }
   p {

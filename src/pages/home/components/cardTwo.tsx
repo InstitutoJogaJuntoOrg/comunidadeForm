@@ -33,46 +33,17 @@ export const CardTwo = ({ image, alt, className, titleCard }: CardsProps) => {
                 </span>
                 {item.Fases.map((fase, index) => (
                   <div key={index}>
-                    <span className="phaseTitle tiitlecard">
-                      <strong>
-                        Fase {index + 1} - {fase.Nome}
-                      </strong>
+                    <span className="tiitlecard">
+                     
+                        <span>{fase.Nome}</span>
+                     
                     </span>
                     <br />
-                    {fase.Módulos && (
-                      <span className="location">
-                        <strong>Módulos:</strong> {fase.Módulos.join(", ")}{" "}
-                        <br />
-                      </span>
-                    )}
-
-                    {fase.Duração && (
-                      <span className="date">
-                        <strong>Duração:</strong> {fase.Duração} <br />
-                      </span>
-                    )}
-
-                    {fase.Conteúdo && (
-                      <span className="">
-                        <strong>Conteúdo:</strong> {fase.Conteúdo} <br />
-                      </span>
-                    )}
-
-                    {fase.Temas && (
-                      <span className="">
-                        <strong>Temas:</strong> {fase.Temas.join(", ")} <br />
-                      </span>
-                    )}
-
-                    {fase.Workshops && (
-                      <span className="location">
-                        <strong>Workshops:</strong> {fase.Workshops.join(", ")}
-                      </span>
-                    )}
+   
                     {fase.Descrição && (
-                      <span className="desc">
-                        <strong>Descrição:</strong> {fase.Descrição}
-                      </span>
+                      <h2 className="tiitlecard">
+                         {fase.Descrição}
+                      </h2>
                     )}
                   </div>
                 ))}

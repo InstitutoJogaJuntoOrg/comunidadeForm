@@ -24,7 +24,6 @@ import { SocioEconomico } from "./components/socioeconomico";
 import axios from "axios";
 import { civilState } from "./components/options/civil_state";
 import { Footer } from "../../components/footer";
-
 interface City {
   name: string;
   code: string;
@@ -32,7 +31,6 @@ interface City {
 
 export const FormPage = () => {
   const { image } = useContext(ImageContext);
-
   const [user, setUser] = useState(localStorage.getItem("username") || "");
   const [email, setEmail] = useState(localStorage.getItem("email") || "");
   const [date, setDate] = useState("");
@@ -167,13 +165,10 @@ export const FormPage = () => {
     }
   };
 
-
   const apiUrl = `${import.meta.env.VITE_API_URL}/personalinfo/`;
   async function sendPersonalInfo(data: FormSchemaType) {
     console.log("Enviando dados:", data);
     localStorage.setItem("personalForm", "true");
-
-
 
     const cleanedPhone = data.phone.replace(/[\s\.-]/g, "");
 
@@ -201,9 +196,12 @@ export const FormPage = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-
       console.log("response: ", response);
-
+      
+      if (data.socialName && data.socialName.length > 1) {
+        localStorage.setItem("username", data.socialName);
+        window.location.reload();
+      }
       setIsTabEnabledSocial(true);
       setIsTabEnabledDate(true);
       setActiveTab(1);
@@ -245,368 +243,360 @@ export const FormPage = () => {
   const quizForm = localStorage.getItem("quizForm");
 
   return (
-    <>
-      {!(
-        quizForm === "true" &&
-        personalForm === "true" &&
-        socioeconomicForm === "true"
-      ) && (
-        <Container>
-          <ToastContainer />
+    <div>
+      <div className="containerAll2">
+        {/* <div className="vector" style={{
 
-          <Dialog
-            header=""
-            visible={youngerAge}
-            className="modals"
-            onHide={() => setYoungerAge(false)}
-          >
-            <div className="modal">
-              <p
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "600",
-                }}
-                className="m-0"
-              >
-                Aviso para menores de idade
-              </p>
-              <span>
-                A partir daqui, a prova será iniciada e você terá{" "}
-                <strong>30 minutos</strong> para respondê-la
-              </span>
-              <div className="card flex justify-content-center">
-                <br />
-                <Button
-                  onClick={() => setVisible(false)}
-                  icon="pi pi-check"
-                  label="Iniciar"
-                />
-              </div>
-            </div>
-          </Dialog>
+        }}>
+          <img src="/Vector.png" alt="" />
+        </div> */}
+        <div className="vector2">
+          <img src="/Vector2.png" alt="" />
+        </div>
 
-          <Dialog
-            header=""
-            visible={visible}
-            className="modals"
-            onHide={() => setVisible(false)}
-          >
-            <div className="modal">
-              <img
-                style={{
-                  width: "50px",
-                  paddingBottom: "1rem",
-                }}
-                className="imgModal"
-                src="https://cdn.discordapp.com/attachments/566850308702208001/1148304394228600832/Group_93.png"
-                alt=""
-              />
-              <p
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "600",
-                }}
-                className="m-0"
-              >
-                Inscrição realizada!
-              </p>
-              <span>
-                A partir daqui, a prova será iniciada e você terá{" "}
-                <strong>30 minutos</strong> para respondê-la
-              </span>
-              <div className="card flex justify-content-center">
-                <br />
-                <Button
-                  onClick={() => setVisible(false)}
-                  icon="pi pi-check"
-                  label="Iniciar"
-                />
-              </div>
-            </div>
-          </Dialog>
-          <form onSubmit={handleSubmit(sendPersonalInfo)}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                gap: "2rem",
-              }}
+        {!(
+          quizForm === "true" &&
+          personalForm === "true" &&
+          socioeconomicForm === "true"
+        ) && (
+          <Container>
+            <ToastContainer />
+
+            <Dialog
+              header=""
+              visible={youngerAge}
+              className="modals"
+              onHide={() => setYoungerAge(false)}
             >
-              <div>
-                <div className="card">
-                  <TabView
-                    activeIndex={activeTab}
-                    onTabChange={(e) => setActiveTab(e.index)}
-                  >
-                    <TabPanel
-                      header="Dados pessoais"
-                      disabled={isTabEnabledDate}
+              <div className="modal">
+                <p
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "600",
+                  }}
+                  className="m-0"
+                >
+                  Aviso para menores de idade
+                </p>
+                <span>
+                  A partir daqui, a prova será iniciada e você terá{" "}
+                  <strong>30 minutos</strong> para respondê-la
+                </span>
+                <div className="card flex justify-content-center">
+                  <br />
+                  <Button
+                    onClick={() => setVisible(false)}
+                    icon="pi pi-check"
+                    label="Iniciar"
+                    className="buttonYellow"
+                  />
+                </div>
+              </div>
+            </Dialog>
+
+            <Dialog
+              header=""
+              visible={visible}
+              className="modals"
+              onHide={() => setVisible(false)}
+            >
+              <div className="modal">
+                <img
+                  style={{
+                    width: "50px",
+                    paddingBottom: "1rem",
+                  }}
+                  className="imgModal"
+                  src="https://cdn.discordapp.com/attachments/566850308702208001/1148304394228600832/Group_93.png"
+                  alt=""
+                />
+                <p
+                  style={{
+                    fontSize: "1.2rem",
+                    fontWeight: "600",
+                  }}
+                  className="m-0"
+                >
+                  Inscrição realizada!
+                </p>
+                <span>
+                  A partir daqui, a prova será iniciada e você terá{" "}
+                  <strong>30 minutos</strong> para respondê-la
+                </span>
+                <div className="card flex justify-content-center">
+                  <br />
+                  <Button
+                    className="buttonYellow"
+                    onClick={() => setVisible(false)}
+                    icon="pi pi-check"
+                    label="Iniciar"
+                  />
+                </div>
+              </div>
+            </Dialog>
+            <span className="titleForm">Inscrição</span>
+            <form onSubmit={handleSubmit(sendPersonalInfo)}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "2rem",
+                }}
+              >
+                <div>
+                  <div className="card">
+                    <TabView
+                      activeIndex={activeTab}
+                      onTabChange={(e) => setActiveTab(e.index)}
                     >
-                      <ContainerFlexInputs>
-                        <div>
-                          <span
+                      <TabPanel
+                        header="Dados pessoais"
+                        disabled={isTabEnabledDate}
+                      >
+                        <ContainerFlexInputs>
+                          <div>
+                            {/* <span
                             style={{
                               color: "white",
                               fontSize: "12px",
                             }}
                           >
                             * Campos obrigatórios
-                          </span>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Nome *</label>
-                            <InputText
-                              {...register("first_name")}
-                              id="username"
-                              onChange={(e) => setUser(e.target.value)}
-                              value={user}
-                              aria-describedby="username-help"
-                              placeholder="Nome"
-                              className={errors.first_name ? "p-invalid" : ""}
-                            />
-                          </div>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Sobrenome: *</label>
-                            <InputText
-                              {...register("last_name")}
-                              id="Sobrenome"
-                              aria-describedby="username-help"
-                              placeholder="Sobrenome"
-                              className={errors.last_name ? "p-invalid" : ""}
-                            />
-                          </div>
-                          
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Data de nascimento *</label>
-                            <input
-                              {...register("date")}
-                              id="date"
-                              type="date"
-                              value={date}
-                              onChange={handleChange}
-                              placeholder="dd-mm-yyyy"
-                              className={errors.date ? "p-invalid" : ""}
-                            />
-                          </div>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Estado: *</label>
-                            <Dropdown
-                              options={states}
-                              value={selectedCity}
-                              optionLabel="name"
-                              defaultValue={"SP"}
-                              onChange={(e) => {
-                                setSelectedCity(e.value);
-                                setValue("state", e.value);
-                              }}
-                              placeholder="Selecione o estado"
-                              className={
-                                errors.state
-                                  ? "p-invalid w-full md:w-14rem"
-                                  : "w-full md:w-14rem"
-                              }
-                              showClear
-                            />
-                          </div>
-
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Cidade *</label>
-                            <InputText
-                              maxLength={15}
-                              {...register("city")}
-                              placeholder="Cidade"
-                              className={errors.city ? "p-invalid" : ""}
-                              defaultValue={"Ilhabela"}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Nome social:</label>
-                            <InputText
-                              {...register("socialName")}
-                              id="socialName"
-                              aria-describedby="username-help"
-                              placeholder="Nome social"
-                              className={errors.socialName ? "p-invalid" : ""}
-                            />
-                          </div>
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>CPF: *</label>
-                            <InputMask
-                              mask="999.999.999-99"
-                              {...register("cpf", { required: true })}
-                              placeholder="___.___.___-__"
-                              className={errors.cpf ? "p-invalid" : ""}
-                            />
-                          </div>
-                          <div>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                              }}
-                            >
-                              <label>Email: *</label>
-
+                          </span> */}
+                            <div className="inputForm">
+                              <div>
+                                <span>Nome *</span>
+                              </div>
                               <InputText
-                                {...register("email")}
-                                value={email}
-                                placeholder="Email"
-                                className={errors.email ? "p-invalid" : ""}
+                                {...register("first_name")}
+                                id="username"
+                                onChange={(e) => setUser(e.target.value)}
+                                value={user}
+                                aria-describedby="username-help"
+                                placeholder="Nome"
+                                className={errors.first_name ? "p-invalid" : ""}
+                              />
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>Sobrenome *</span>
+                              </div>
+                              <InputText
+                                {...register("last_name")}
+                                id="Sobrenome"
+                                aria-describedby="username-help"
+                                placeholder="Sobrenome"
+                                className={errors.last_name ? "p-invalid" : ""}
+                              />
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>Data de nascimento *</span>
+                              </div>
+                              <input
+                                {...register("date")}
+                                id="date"
+                                type="date"
+                                value={date}
+                                onChange={handleChange}
+                                placeholder="dd-mm-yyyy"
+                                className={errors.date ? "p-invalid" : ""}
+                              />
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>Estado *</span>
+                              </div>
+                              <Dropdown
+                                options={states}
+                                value={selectedCity}
+                                optionLabel="name"
+                                defaultValue={"SP"}
+                                onChange={(e) => {
+                                  setSelectedCity(e.value);
+                                  setValue("state", e.value);
+                                }}
+                                placeholder="Selecione o estado"
+                                className={
+                                  errors.state
+                                    ? "p-invalid w-full md:w-14rem"
+                                    : "w-full md:w-14rem"
+                                }
+                                showClear
+                              />
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>Cidade *</span>
+                              </div>
+                              <InputText
+                                maxLength={15}
+                                {...register("city")}
+                                placeholder="Cidade"
+                                className={errors.city ? "p-invalid" : ""}
                               />
                             </div>
                           </div>
+                          <br />
+                          <div>
+                            <div className="inputForm">
+                              <div>
+                                <span>Nome social</span>
+                              </div>
+                              <InputText
+                                {...register("socialName")}
+                                id="socialName"
+                                aria-describedby="username-help"
+                                placeholder="Nome social"
+                                className={errors.socialName ? "p-invalid" : ""}
+                              />
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>CPF *</span>
+                              </div>
+                              <InputMask
+                                mask="999.999.999-99"
+                                {...register("cpf", { required: true })}
+                                placeholder="___.___.___-__"
+                                className={errors.cpf ? "p-invalid" : ""}
+                              />
+                            </div>
+                            <br />
+                            <div>
+                              <div className="inputForm">
+                                <div>
+                                  <span>Email *</span>
+                                </div>
 
+                                <InputText
+                                  {...register("email")}
+                                  value={email}
+                                  placeholder="Email"
+                                  className={errors.email ? "p-invalid" : ""}
+                                />
+                              </div>
+                            </div>
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span> Telefone (WhatsApp) *</span>
+                              </div>
 
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label> Telefone (WhatsApp) *</label>
+                              <InputText
+                                {...register("phone")}
+                                placeholder="12 999999999"
+                                maxLength={15}
+                                className={errors.phone ? "p-invalid" : ""}
+                              />
+                            </div>
 
-                            <InputText
-                              {...register("phone")}
-                              placeholder="12 999999999"
-                              maxLength={15}
-                              className={errors.phone ? "p-invalid" : ""}
-                            />
+                            <br />
+                            <div className="inputForm">
+                              <div>
+                                <span>Estado civil: *</span>
+                              </div>
+
+                              <Dropdown
+                                options={civilState}
+                                value={selectedStateSocial}
+                                optionLabel="name"
+                                onChange={(e) => {
+                                  setelectedStateSocial(e.value);
+                                  setValue("civil_state", e.value);
+                                }}
+                                placeholder="Estado civil"
+                                className={
+                                  errors.civil_state
+                                    ? "p-invalid w-full md:w-14rem"
+                                    : "w-full md:w-14rem"
+                                }
+                                showClear
+                              />
+                            </div>
+
+                            <ContainerButtons className="flexEnd">
+                              <button
+                                className="buttonForm"
+                                type="submit"
+                                onClick={ErrosSending}
+                              >
+                                Próximo
+                              </button>
+                            </ContainerButtons>
                           </div>
-
-
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                            }}
-                          >
-                            <label>Estado civil: *</label>
-
-                            <Dropdown
-                              options={civilState}
-                              value={selectedStateSocial}
-                              optionLabel="name"
-                              onChange={(e) => {
-                                setelectedStateSocial(e.value);
-                                setValue("civil_state", e.value);
-                              }}
-                              placeholder="Estado civil"
-                              className={
-                                errors.civil_state
-                                  ? "p-invalid w-full md:w-14rem"
-                                  : "w-full md:w-14rem"
-                              }
-                              showClear
-                            />
-                          </div>
-
-                          <ContainerButtons className="flexEnd">
-                            <button
-                              className="buttonForm"
-                              type="submit"
-                              onClick={ErrosSending}
-                            >
-                              Próximo
-                            </button>
-                          </ContainerButtons>
-                        </div>
-                      </ContainerFlexInputs>
-                      <ContainerSteps>
-                        <Steps
-                          model={items}
-                          activeIndex={activeIndex}
-                          onSelect={(e) => setActiveIndex(e.index)}
+                        </ContainerFlexInputs>
+                        <ContainerSteps>
+                          <Steps
+                            model={items}
+                            activeIndex={activeIndex}
+                            onSelect={(e) => setActiveIndex(e.index)}
+                          />
+                        </ContainerSteps>
+                      </TabPanel>
+                      <TabPanel
+                        header="Dados socioeconômicos"
+                        disabled={isTabEnabledSocial}
+                      >
+                        <SocioEconomico
+                          setTabEnabled={setTabEnabled}
+                          setActiveTab={setActiveTab}
+                          setVisible={setVisible}
                         />
-                      </ContainerSteps>
-                    </TabPanel>
-                    <TabPanel
-                      header="Dados socioeconômicos"
-                      disabled={isTabEnabledSocial}
-                    >
-                      <SocioEconomico
-                        setTabEnabled={setTabEnabled}
-                        setActiveTab={setActiveTab}
-                        setVisible={setVisible}
-                      />
 
-                      <ContainerSteps>
-                        <Steps
-                          model={items}
-                          activeIndex={1}
-                          onSelect={(e) => setActiveIndex(e.index)}
-                        />
-                      </ContainerSteps>
-                    </TabPanel>
+                        <ContainerSteps>
+                          <Steps
+                            model={items}
+                            activeIndex={1}
+                            onSelect={(e) => setActiveIndex(e.index)}
+                          />
+                        </ContainerSteps>
+                      </TabPanel>
 
-                    <TabPanel header="Prova" disabled={isTabEnabled}>
-                      <Timer />
-                      <Prova />
-                      <ContainerSteps>
-                        <Steps
-                          model={items}
-                          activeIndex={2}
-                          onSelect={(e) => setActiveIndex(e.index)}
-                        />
-                      </ContainerSteps>
-                    </TabPanel>
-                  </TabView>
+                      <TabPanel header="Prova" disabled={isTabEnabled}>
+                        <Timer />
+                        <Prova />
+                        <ContainerSteps>
+                          <Steps
+                            model={items}
+                            activeIndex={2}
+                            onSelect={(e) => setActiveIndex(e.index)}
+                          />
+                        </ContainerSteps>
+                      </TabPanel>
+                    </TabView>
+                  </div>
                 </div>
               </div>
-            </div>
-          </form>
-        </Container>
-      )}
-      {quizForm === "true" &&
-        personalForm === "true" &&
-        socioeconomicForm === "true" && (
-          <Container>
-            <div className="success">
-              Parabéns! Você já completou todos os formulários.
-              <p>
-                Assim que saírem, as respostas serão enviadas para o seu e-mail.
-              </p>
-            </div>
+            </form>
           </Container>
         )}
-      <Footer />
-    </>
+        {quizForm === "true" &&
+          personalForm === "true" &&
+          socioeconomicForm === "true" && (
+            <Container>
+              <div className="success">
+                Parabéns! Você já completou todos os formulários.
+                <p>
+                  Assim que saírem, as respostas serão enviadas para o seu
+                  e-mail.
+                </p>
+              </div>
+            </Container>
+          )}
+      </div>
+      <div
+        style={{
+          marginTop: "0rem",
+        }}
+      >
+        <Footer />
+      </div>
+    </div>
   );
 };

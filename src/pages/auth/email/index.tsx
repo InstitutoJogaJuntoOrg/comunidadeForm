@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Footer } from "../../../components/footer";
 
+
 export const EmailPage = () => {
   const { handleSubmit, register } = useForm<EmailFormSchemaType>({
     resolver: zodResolver(EmailFormSchema),

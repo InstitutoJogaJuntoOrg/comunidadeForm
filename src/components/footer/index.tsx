@@ -1,5 +1,7 @@
 import { Container } from "./styles";
 import { Link } from "react-router-dom";
+import { FaLinkedin } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -7,46 +9,101 @@ export const Footer = () => {
       <Container>
         <div>
           <Link to={"/"}>
-            <img
-              src="https://cdn.discordapp.com/attachments/566850308702208001/1146230197813788702/Vector_1.png"
-              alt="ilhabela prefeitura"
-            />
+            <img src="/logo_white.png" alt="Comunidade logo" />
           </Link>
-          <div>
-            <a
-              href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/Aviso+de+Privacidade+IlhaBela+Tech+IV.pdf"
-              target="blank"
+
+          <div className="footerFlex">
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
             >
-              {" "}
-              Política de Privacidade{" "}
-            </a>
-            <a
-              href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/TERMOS+DE+USO+SITE+ILHABELA+TECH+II.pdf"
-              target="blank"
+              <h1>Organização</h1>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.jogajuntoinstituto.org/#Sobre"
+                >
+                  Sobre
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.jogajuntoinstituto.org/#metodologia"
+                >
+                  Método
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.jogajuntoinstituto.org/#Projetos"
+                >
+                  Projetos
+                </a>
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.jogajuntoinstituto.org/#Contato"
+                >
+                  Contato
+                </a>
+              </li>
+            </ul>
+
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "1rem",
+              }}
             >
-              {" "}
-              Termos de uso do site{" "}
-            </a>
-            <Link to={"/portal-do-titular"}>Portal do titular</Link>
-            
+              <h1>Projetos</h1>
+              <li>Trip</li>
+              <li>Farm</li>
+              <li>Voa</li>
+              <li>Goal</li>
+            </ul>
           </div>
-          <div>
+          <div className="colaboraai">
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+           
+              <a style={{
+                color: "black",
+                backgroundColor: "#f1c40f",
+                fontSize: '1rem',
+                fontWeight: '500',
+                borderRadius: '15px',
+                padding: '1rem 1.5rem'
+              }} href="https://www.paypal.com/donate/?hosted_button_id=ABNWG273YLYWU" target="`_b">Doe</a>
             
-            <p>IETEC</p>
-            <a href="tel:1238956402">Telefone: (12) 3895-6402</a>
-            <p>
-              Endereço: Av. Profº Malaquias de O. Freitas, 448 - Barra Velha,
-              Ilhabela - SP, 11630-000{" "}
-            </p>
+              <div>
+                <a
+                  target="_blank"
+                  href="https://br.linkedin.com/company/institutojogajunto"
+                >
+                  <FaLinkedin />
+                </a>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/institutojogajunto"
+                >
+                  <FaInstagram />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-       <a style={{
-            textDecoration: 'underline',
-            color: '#f8fcf7'
-           }} href="https://wa.me/5511945950731" target={"_blank"}>Ajuda</a>
-        <div>
-          
-          <p>Todos os direitos reservados - Instituto Joga Junto </p>
+        <hr />
+        <div className="footerSub">
+          <p>© Instituto Joga Junto 2023. Todos os direitos reservados.</p>
         </div>
       </Container>
     </footer>
