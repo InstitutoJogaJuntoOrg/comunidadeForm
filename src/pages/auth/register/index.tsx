@@ -170,62 +170,6 @@ export const RegisterPage = () => {
                 </div>
               </FormField>
               
-          <div
-            className="card flex justify-content-center"
-            style={{
-              display: "flex",
-              width: "100%",
-              marginTop: "1rem",
-     
-              color: "white",
-            }}
-          >
-            <input
-              id="myCheckboxtWO"
-              style={{
-                width: "24px",
-                marginRight: "10px",
-              }}
-              type="checkbox"
-              {...register("checkedtWO")}
-            />
-            <label htmlFor="myCheckboxtWO">
-              <p>
-              Estou ciente da <span>
-               <Link to="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/Aviso+de+Privacidade+IlhaBela+Tech+IV.pdf" target='_blank'> política de privacidade de dados</Link> </span> 
-              </p>
-            </label>
-            
-            
-          </div>
-
-          <div
-            className="card flex justify-content-center"
-            style={{
-              display: "flex",
-              width: "100%",
-              marginTop: "1rem",
-     
-              color: "white",
-            }}
-          >
-            <input
-              id="myCheckboxtTree"
-              style={{
-                width: "24px",
-                marginRight: "10px",
-              }}
-              type="checkbox"
-              {...register("checkedTree")}
-            />
-            <label htmlFor="myCheckboxtTree">
-              <p>
-              Eu entendo que é um curso de tecnologia
-              </p>
-            </label>
-            
-            
-          </div>
 
 
               <button
