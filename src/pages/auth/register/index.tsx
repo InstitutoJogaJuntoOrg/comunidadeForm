@@ -33,25 +33,6 @@ export const RegisterPage = () => {
   });
 
 
-  function ErrosSending() {
-    if (errors.checked) {
-      toast.error(
-        "Por favor aceite os termos de uso do site"
-      );
-    }
-    if (errors.checkedtWO) {
-      toast.error("Por favor aceite os termos de política de privacidade de dados")
-    }
-    if (errors.checkedTree) {
-      toast.error("Por favor concorde com 'Eu entendo que é um curso de tecnologia' ")
-    }
-    if (errors.name) {
-      toast.error(
-        "Por favor informe um nome válido"
-      );
-    }
-  }
-
 
   function handleSubmitRegister(data: RegisterSchemaType) {
     const requestData = {
