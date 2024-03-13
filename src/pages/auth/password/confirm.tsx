@@ -99,19 +99,14 @@ export const NewPassword = () => {
             const [key, value] = part.split('=');
             params[key] = decodeURIComponent(value); // decodifica os valores dos parâmetros
         }
-
+        
+        setToken(params.token);
+        setUuid(params.uid);
         return params;
     }
 
     const params = getUrlParams();
-    if (params.uid) {
-        setUuid(params.uid);
-        console.log(params.uid)
-
-    }
-    if (params.token) {
-        setToken(params.token);
-    }
+    
 }, []);
 
   console.log(errors);
