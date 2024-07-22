@@ -23,7 +23,7 @@ export const EmailPage = () => {
   const handleSubmitLogin = async (data: EmailFormSchemaType) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/email_check/`,
+        `https://devapi.jogajuntoinstituto.org/users/email_check/`,
         { email: data.email }
       );
 

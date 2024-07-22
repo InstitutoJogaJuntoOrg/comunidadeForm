@@ -172,7 +172,7 @@ export const ContainerTitle = styled.div`
 
   gap: 1rem;
   span {
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 500;
   }
   button {
@@ -226,3 +226,73 @@ export const About = styled.div`
     color: #FCD700;
   }
 `;
+
+export const HomeContainer = styled.div`
+  display: flex;
+  height: 100vh;
+  @media (max-width: 800px) {
+    height: 100%;
+  }
+  padding-top: 2rem;
+  p {
+    margin-top: 1rem;
+    max-width: 900px;
+  }
+  background-color: black;
+  padding-top: 3rem;
+  color: white;
+  padding: 5rem;
+  flex-direction: column;
+  font-size: 1.5rem;
+  @media (max-width: 800px) {
+    font-size: 1rem;
+    gap: 0rem;
+  }
+
+  gap: 2rem;
+  .button-help {
+      background-color: #fcd700;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  .banners {
+    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    justify-content: start;
+ 
+    @media (max-width: 800px) {
+       margin-top: 4rem;
+  }
+    img {
+      width:25%;
+      @media (max-width: 800px) {
+        width:100%;
+  }
+    }
+ 
+  }
+ .subtitle {
+    display: flex;
+    margin-top: 3rem;
+    flex-direction: column;
+    max-width: 100%;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    button {
+     padding: 1rem 2rem;
+    }
+    img {
+      max-width: 50%;
+    }
+  }
+`

@@ -70,6 +70,7 @@ export const PasswordReset = () => {
   console.log(errors);
   return (
     <>
+    
       <div className="heigh">
         <Container>
           <ToastContainer />

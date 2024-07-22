@@ -9,7 +9,7 @@ export const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [userEmail, setUserEmail] = useState("");
-  const emailFromLocalStorage = localStorage.getItem("username");
+  const emailFromLocalStorage = localStorage.getItem("token");
   const closeMenu = () => {
     setShowLinks(false);
   };
@@ -25,7 +25,7 @@ export const Header = () => {
     };
 
     const checkUserAuthentication = () => {
-      const emailFromLocalStorage = localStorage.getItem("username");
+      const emailFromLocalStorage = localStorage.getItem("token");
 
       if (emailFromLocalStorage) {
         setUserEmail(emailFromLocalStorage);
@@ -44,7 +44,7 @@ export const Header = () => {
   return (
     <HeaderContainer className={showLinks ? "show-links" : ""}>
       <nav>
-        <a target="_blank" href={"https://www.jogajuntoinstituto.org/"}>
+        <Link to={"/"}>
           <img
             style={{
               width: "150px",
@@ -53,10 +53,10 @@ export const Header = () => {
             src="https://www.jogajuntoinstituto.org/image/Logo_about.png"
             alt="Instituto Joga Junto"
           />
-        </a>
+        </Link>
         <ul className={windowWidth <= 1000 && showLinks ? "hidden" : ""}>
           {!emailFromLocalStorage && (
-            <StyledNavLink to="/login">Login</StyledNavLink>
+            <StyledNavLink to="/login">Inscrição</StyledNavLink>
           )}
 
           {emailFromLocalStorage && <MyDropdown />}

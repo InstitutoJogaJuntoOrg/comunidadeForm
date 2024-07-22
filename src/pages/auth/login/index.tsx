@@ -1,3 +1,4 @@
+
 import { InputText } from "primereact/inputtext";
 import { Container } from "../../form";
 import { FormField, Register } from "../register/styles";
@@ -21,27 +22,20 @@ export const LoginPage = () => {
   const handleSubmitLogin = handleSubmit(async (data) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/login/`,
+        `https://api.jogajuntoinstituto.org/hotsite/students/login/`,
         { email: data.email, password: data.password }
       );
 
-      console.log(data.email);
       if (response.status === 200) {
-        if (response.data.project != "comunidade") {
-          alert(
-            "Sua conta não está configurada corretamente. Por favor, contate o suporte: 5511945950731"
-          );
-          localStorage.clear(); // Remova todos os itens do localStorage
-          window.location.reload();
-          return;
-        }
+      
 
         localStorage.setItem("email", data.email); // Use data.email em vez de email
         console.log("logado");
         setData(response.data);
+        localStorage.setItem("subscription_code", response.data.subscription_code);
         localStorage.setItem("token", response.data.access);
         localStorage.setItem("refresh", response.data.refresh);
-        localStorage.setItem("username", response.data.user);
+        localStorage.setItem("username", response.data.first_name);
         localStorage.setItem("personalForm", response.data.personal_form);
         localStorage.setItem(
           "socioeconomicForm",
@@ -73,115 +67,123 @@ export const LoginPage = () => {
   console.log(data);
 
   return (
-   <div>
-     <div className="containerAll">
-              <div className="vector">
+    <div
+      style={{
+        width: "100%",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+        }}
+      >
+      </div>
+      <div className="containerAll">
+        <div className="vector">
           <img src="/Vector.png" alt="" />
         </div>
         <div className="vector2">
           <img src="/Vector2.png" alt="" />
         </div>
-      <Container>
-      <br />
-      <br />
-        <ToastContainer />
+        <Container>
+          <br />
+          <br />
+          <ToastContainer />
 
-        <div className="background-div"></div>
-      
-        <form
-        className="margintop"
-          onSubmit={handleSubmit(handleSubmitLogin)}
-          style={{
-            width: "30rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-          }}
-        >
-          <h1>Login</h1>
-          <FormField>
-            <label>Email</label>
-            <InputText
-              id="email"
-              {...register("email")}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-describedby="email-help"
-              placeholder="Email"
-              value={email}
-            />
-          </FormField>
+          <div className="background-div"></div>
 
-          <FormField>
-            <label>Senha</label>
-            <InputText
-              id="password"
-              {...register("password")}
-              aria-describedby="password-help"
-              placeholder="Senha"
-              type="password"
-            />
-          </FormField>
-
-          <div
+          <form
+            className="margintop"
+            onSubmit={handleSubmit(handleSubmitLogin)}
             style={{
-              marginTop: "1rem",
-              color: "white",
-              width: "100%",
+              width: "30rem",
               display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
-            <Register>
-              <span className="">
-                <span>
-                  <Link
-                    to={"/reset"}
-                    style={{
-                      textDecoration: "underline",
-                      color: "white",
-                      marginLeft: "1%",
-                      position: "absolute",
-                    }}
-                  >
-                    Esqueci minha senha
-                  </Link>
+            <h1>Login</h1>
+            <FormField>
+              <label>Email</label>
+              <InputText
+                id="email"
+                {...register("email")}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-describedby="email-help"
+                placeholder="Email"
+                value={email}
+              />
+            </FormField>
+
+            <FormField>
+              <label>Senha</label>
+              <InputText
+                id="password"
+                {...register("password")}
+                aria-describedby="password-help"
+                placeholder="Senha"
+                type="password"
+              />
+            </FormField>
+
+            <div
+              style={{
+                marginTop: "1rem",
+                color: "white",
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "flex-end",
+              }}
+            >
+              {/* <Register>
+                <span className="">
+                  <span>
+                    <Link
+                      to={"/reset"}
+                      style={{
+                        textDecoration: "underline",
+                        color: "white",
+                        marginLeft: "1%",
+                        position: "absolute",
+                      }}
+                    >
+                      Esqueci minha senha
+                    </Link>
+                  </span>
                 </span>
+              </Register> */}
+            </div>
+
+            <button
+              style={{
+                fontSize: "16px",
+                borderRadius: "26px",
+              }}
+              type="submit"
+            >
+              Login
+            </button>
+            <br />
+            <Register>
+              <h3>Ainda não tem uma conta?</h3>
+              <span className="register">
+                <Link
+                  to={"/register"}
+                  style={{
+                    color: "white",
+                  }}
+                >
+                  Clique aqui e registre-se
+                </Link>
               </span>
             </Register>
-          </div>
-
-          <button
-            style={{
-              fontSize: "16px",
-              borderRadius: "26px",
-            }}
-            type="submit"
-          >
-            Login
-          </button>
-          <br />
-          <Register>
-            <h3>Ainda não tem uma conta?</h3>
-            <span className="register">
-              <Link
-                to={"/register"}
-                style={{
-                  color: "white",
-                }}
-              >
-                Clique aqui e registre-se
-              </Link>
-            </span>
-          </Register>
-        </form>
-      </Container>
-
-   
+          </form>
+        </Container>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-   </div>
   );
 };

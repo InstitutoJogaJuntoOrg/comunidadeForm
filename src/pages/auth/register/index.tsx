@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Footer } from "../../../components/footer";
 
-
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const notifySuccess = () => toast.success("Usuário cadastrado com sucesso!");
@@ -32,18 +31,17 @@ export const RegisterPage = () => {
     resolver: zodResolver(RegisterSchema),
   });
 
-
-
   function handleSubmitRegister(data: RegisterSchemaType) {
+    const cleanedPhone = data.phone.replace(/[\s\.-]/g, "");
     const requestData = {
-      username: data.name,
+      first_name: data.name,
       password: data.password,
       email: data.email,
-      project: "comunidade",
+      phone: cleanedPhone,
     };
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/users/`, requestData)
+      .post(`https://api.jogajuntoinstituto.org/hotsite/students/`, requestData)
       .then((response) => {
         notifySuccess();
         setTimeout(() => {
@@ -51,6 +49,7 @@ export const RegisterPage = () => {
         }, 2000);
         if (response.status === 201) {
           localStorage.setItem("email", email);
+          localStorage.setItem("username", data.name);
           setTimeout(() => {
             navigate("/auth");
           }, 2000);
@@ -116,6 +115,26 @@ export const RegisterPage = () => {
               </FormField>
 
               <FormField>
+                <label>Telefone</label>
+                <InputText
+                  id="phone"
+                  {...register("phone")}
+                  aria-describedby="phone-help"
+                  placeholder="Exemplo: 11945555555"
+                  className={errors.phone ? "p-invalid" : ""}
+                />
+                <span
+                  style={{
+                    fontSize: "12px",
+                    color: "white",
+                    marginTop: "6px",
+                  }}
+                >
+                  {errors.phone?.message} Exemplo: 11945555555
+                </span>
+              </FormField>
+
+              <FormField>
                 <label>Senha</label>
                 <div style={{ position: "relative", display: "flex" }}>
                   <InputText
@@ -150,8 +169,6 @@ export const RegisterPage = () => {
                   />
                 </div>
               </FormField>
-              
-
 
               <button
                 style={{
@@ -159,7 +176,6 @@ export const RegisterPage = () => {
                   borderRadius: "26px",
                 }}
                 type="submit"
-          
               >
                 Registrar
               </button>
@@ -167,11 +183,9 @@ export const RegisterPage = () => {
               <br />
             </form>
           </div>
-          
         </Container>
-        
       </div>
-      
+
       <Footer />
     </div>
   );

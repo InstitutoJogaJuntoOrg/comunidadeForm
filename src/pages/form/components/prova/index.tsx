@@ -31,30 +31,32 @@ export const Prova = () => {
       questionFourteen: parseInt(data.questionFourteen),
     };
     const token = localStorage.getItem("token");
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/quiz/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        question_1: transformedData.questionOne,
-        question_2: transformedData.questionTwo,
-        question_3: transformedData.questionThree,
-        question_4: transformedData.questionFour,
-        question_5: transformedData.questionFive,
-        question_6: transformedData.questionSix,
-        question_7: transformedData.questionSeven,
-        question_8: transformedData.questionEight,
-        question_9: transformedData.questionNine,
-        question_10: transformedData.questionTen,
-        question_11: transformedData.questionEleven,
-        question_12: transformedData.questionTwelve,
-        question_13: transformedData.questionThirteen,
-        question_14: transformedData.questionFourteen,
-        question_15: 1,
-      }),
-    });
+    const response = await fetch(
+      "https://api.jogajuntoinstituto.org/hotsite/students/exam/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          question_1: transformedData.questionOne,
+          question_2: transformedData.questionTwo,
+          question_3: transformedData.questionThree,
+          question_4: transformedData.questionFour,
+          question_5: transformedData.questionFive,
+          question_6: transformedData.questionSix,
+          question_7: transformedData.questionSeven,
+          question_8: transformedData.questionEight,
+          question_9: transformedData.questionNine,
+          question_10: transformedData.questionTen,
+          question_11: transformedData.questionEleven,
+          question_12: transformedData.questionTwelve,
+          question_13: transformedData.questionThirteen,
+          question_14: transformedData.questionFourteen,
+        }),
+      }
+    );
 
     if (response.ok) {
       const responseData = await response.json();
@@ -69,14 +71,15 @@ export const Prova = () => {
   console.log(errors);
   return (
     <Container>
-      <form onSubmit={handleSubmit(handleForm)} className=" responsiveProva">
+      <form
+        onSubmit={handleSubmit(handleForm)}
+        className="boxSh responsiveProva"
+      >
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            1: O computador é uma máquina destinada ao processamento de dados,
-            capaz de obedecer a instruções que visam produzir certas
-            transformações nesses dados para alcançar um fim determinado. Esta
-            máquina, por sua vez, é formada por uma parte física e uma parte
-            lógica, que são conhecidas como:
+            1:(CESGRANRIO 2023) Nos últimos meses, o campo da comunicação ganhou
+            um concorrente que pode substituir o ser humano em uma conversa e,
+            até mesmo, produzir respostas em tempo real.
           </h1>
           <label className="hLabel" htmlFor="q1-option1">
             <input
@@ -86,7 +89,7 @@ export const Prova = () => {
               id="q1-option1"
               value={3}
             />
-            Disco rígido e Windows
+            Java
           </label>
 
           <label className="hLabel" htmlFor="q1-option2">
@@ -97,7 +100,7 @@ export const Prova = () => {
               id="q1-option2"
               value={2}
             />
-            Programa e placa-mãe
+            Phyton
           </label>
 
           <label className="hLabel" htmlFor="q1-option3">
@@ -108,7 +111,7 @@ export const Prova = () => {
               id="q1-option3"
               value={1}
             />
-            Hardware e software
+            ChatGPT
           </label>
 
           <label className="hLabel" htmlFor="q1-option4">
@@ -119,7 +122,7 @@ export const Prova = () => {
               id="q1-option4"
               value={4}
             />
-            CPU e monitor
+            Java-script
           </label>
 
           <label className="hLabel" htmlFor="q1-option5">
@@ -133,16 +136,12 @@ export const Prova = () => {
             Nenhuma das alternativas
           </label>
         </div>
-<br />
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            2: Um aplicativo, também conhecido como app (do inglês application)
-            ou aplicação é o nome dado a um software de computador que oferece
-            funcionalidades para que um dispositivo possa executar determinadas
-            tarefas necessárias ao usuário, como por exemplo, redigir um texto,
-            fazer uma planilha de vendas, escutar músicas ou acessar a internet.
-            Por falar em internet, quais dos aplicativos listados abaixo podemos
-            utilizar para acessarmos a internet?
+            2: (SABESP 2014) Correspondem, respectivamente, aos elementos placa
+            de som, editor de texto, modem, editor de planilha e navegador de
+            internet:
           </h1>
           <label className="hLabel" htmlFor="q2-option1">
             <input
@@ -152,7 +151,7 @@ export const Prova = () => {
               id="q2-option1"
               value={2}
             />
-            Microsoft Word, Photoshop e Excel
+            software, software, hardware, software e hardware.
           </label>
 
           <label className="hLabel" htmlFor="q2-option2">
@@ -163,7 +162,7 @@ export const Prova = () => {
               id="q2-option2"
               value={4}
             />
-            Windows Explorer, Notepad ++ e Python
+            hardware, software, software, software e hardware.
           </label>
 
           <label className="hLabel" htmlFor="q2-option3">
@@ -174,7 +173,7 @@ export const Prova = () => {
               id="q2-option3"
               value={3}
             />
-            Steam, Adobe Acrobat e Windows Media Player
+            hardware, software, hardware, hardware e software
           </label>
 
           <label className="hLabel" htmlFor="q2-option4">
@@ -185,7 +184,7 @@ export const Prova = () => {
               id="q2-option4"
               value={2}
             />
-            PowerPoint, Youtube e MySQL
+            software, hardware, hardware, software e software.
           </label>
 
           <label className="hLabel" htmlFor="q2-option5">
@@ -196,31 +195,15 @@ export const Prova = () => {
               id="q2-option5"
               value={1}
             />
-            Google Chrome, Safari e Microsoft Edge
+            hardware, software, hardware, software e software.
           </label>
         </div>
-<br />
+        <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            3: Já faz algum tempo que a internet se tornou uma ferramenta
-            indispensável para realização de várias tarefas do nosso dia a dia,
-            como executar operações bancárias, fazer compras, marcar consultas,
-            enviar documentos, só para citar algumas. Muitas dessas tarefas são
-            feitas por meio de sites. Para que possamos encontrar um site na
-            internet, precisamos de seu "nome", por exemplo:
-            "www.jogajuntoinstituto.org". Este "nome" é chamado de:
+            3: (TRE/SP 2012) O sistema operacional de um computador consiste em
+            um:
           </h1>
-          <label className="hLabel" htmlFor="q3-option1">
-            <input
-              className="inputWidth"
-              type="radio"
-              {...register("questionThree")}
-              id="q3-option1"
-              value={2}
-            />
-            Link
-          </label>
-
           <label className="hLabel" htmlFor="q3-option2">
             <input
               className="inputWidth"
@@ -229,9 +212,11 @@ export const Prova = () => {
               id="q3-option2"
               value={1}
             />
-            URL
+            software de gerenciamento, que serve de interface entre os recursos
+            disponíveis para uso do computador e o usuário, sem que este tenha
+            que se preocupar com aspectos técnicos do hardware.
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q3-option3">
             <input
               className="inputWidth"
@@ -240,9 +225,10 @@ export const Prova = () => {
               id="q3-option3"
               value={3}
             />
-            Nickname
+            conjunto de procedimentos programados, armazenados na BIOS, que é
+            ativado tão logo o computador seja ligado
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q3-option4">
             <input
               className="inputWidth"
@@ -251,9 +237,10 @@ export const Prova = () => {
               id="q3-option4"
               value={4}
             />
-            HTTPS
+            conjunto de dispositivos de hardware para prover gerenciamento e
+            controle de uso dos componentes de hardware, software e firmware.
           </label>
-
+          <br />
           <label className="hLabel" htmlFor="q3-option5">
             <input
               className="inputWidth"
@@ -262,21 +249,29 @@ export const Prova = () => {
               id="q3-option5"
               value={5}
             />
-            Algoritmo
+            hardware de gerenciamento que serve de interface entre os recursos
+            disponíveis para uso do computador e o usuário, sem que este tenha
+            que se preocupar com aspectos técnicos do software.
+          </label>
+          <br />
+          <label className="hLabel" htmlFor="q3-option6">
+            <input
+              className="inputWidth"
+              type="radio"
+              {...register("questionThree")}
+              id="q3-option6"
+              value={6}
+            />
+            conjunto de procedimentos programados, armazenados na BIOS, que é
+            ativado tão logo o computador seja ligado.
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            4: Seguindo a definição encontrada em um dicionário, o termo
-            "projeto" pode ser definido como: <br /> <br /> 1 - desejo, intenção
-            de fazer ou realizar (algo) no futuro; plano. <br /> 2 - descrição
-            escrita e detalhada de um empreendimento a ser realizado; plano,
-            delineamento, esquema. <br /> <br />
-            Desta forma, podemos dizer que os projetos podem ter diversas
-            finalidades, entre elas, sociais, de engenharia, pessoais, de
-            tecnologia... Contudo, seja qual for a finalidade, em essência, o
-            termo projeto pode ser definido como:
+            4: (Vunesp/TJ-SP) Sabendo que é verdadeira a afirmação “Todos os
+            alunos de Fulano foram aprovados no concurso”, então é
+            necessariamente verdade:
           </h1>
           <label className="hLabel" htmlFor="q4-option1">
             <input
@@ -286,8 +281,7 @@ export const Prova = () => {
               id="q4-option1"
               value={5}
             />
-            Uma estratégia constante de aperfeiçoamento, na qual as etapas se
-            sucedem, sem fim programado.
+            Fulano não foi aprovado no concurso.
           </label>
 
           <label className="hLabel" htmlFor="q4-option2">
@@ -298,8 +292,8 @@ export const Prova = () => {
               id="q4-option2"
               value={4}
             />
-            Um conjunto de fases previamente definidas, sem programação de fim
-            ou início, mas que cumprem um propósito indeterminado
+            Se Roberto não é aluno de Fulano, então ele não foi aprovado no
+            concurso
           </label>
 
           <label className="hLabel" htmlFor="q4-option3">
@@ -310,8 +304,8 @@ export const Prova = () => {
               id="q4-option3"
               value={1}
             />
-            Um esforço feito para atingir um objetivo, com início e fim
-            programados.
+            Se Carlos não foi aprovado no concurso, então ele não é aluno de
+            Fulano
           </label>
 
           <label className="hLabel" htmlFor="q4-option4">
@@ -322,8 +316,7 @@ export const Prova = () => {
               id="q4-option4"
               value={2}
             />
-            Um conjunto de estratégias modulares que se conectam e completam um
-            ciclo contínuo de retroalimentação.
+            Fulano foi aprovado no concurso
           </label>
 
           <label className="hLabel" htmlFor="q4-option5">
@@ -334,19 +327,16 @@ export const Prova = () => {
               id="q4-option5"
               value={3}
             />
-            Nenhuma das alternativas.
+            Se Elvis foi aprovado no concurso, então ele é aluno de Fulano.
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            5: Em Tecnologia da Informação (TI), os projetos englobam soluções
-            tecnológicas usadas para produzir, acessar, transmitir e gerenciar
-            dados, podendo ser o desenvolvimento de um software para gestão
-            comercial, um aplicativo de compras, de namoro e até um jogo (entre
-            muitos outros). E, para que esses projetos alcancem o resultado
-            planejado e obtenham sucesso, eles precisam de gestão. Entre os
-            métodos de gestão utilizados em TI, podemos citar:
+            5: (IFRN 2023) No método Scrum de gerenciamento de projeto, os
+            artefatos auxiliam as equipes a gerenciarem o desenvolvimento de
+            software. Dentro do Scrum, o artefato que lista as funcionalidades
+            desejadas do produto é o
           </h1>
           <label className="hLabel" htmlFor="q5-option1">
             <input
@@ -356,7 +346,7 @@ export const Prova = () => {
               id="q5-option1"
               value={5}
             />
-            Diagrama, fluxograma e Kanban
+            burnup chart.
           </label>
 
           <label className="hLabel" htmlFor="q5-option2">
@@ -367,7 +357,7 @@ export const Prova = () => {
               id="q5-option2"
               value={4}
             />
-            Trello, contínuo, cascata e normal
+            product incremente
           </label>
 
           <label className="hLabel" htmlFor="q5-option3">
@@ -378,7 +368,7 @@ export const Prova = () => {
               id="q5-option3"
               value={3}
             />
-            Jira, Trello, Ishikawa e Venn
+            sprint backlog.
           </label>
 
           <label className="hLabel" htmlFor="q5-option4">
@@ -389,7 +379,7 @@ export const Prova = () => {
               id="q5-option4"
               value={1}
             />
-            Cascata, incremental, espiral e ágeis
+            product backlog
           </label>
 
           <label className="hLabel" htmlFor="q5-option5">
@@ -406,11 +396,8 @@ export const Prova = () => {
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            6: O Scrum é um sistema ágil de gerenciamento de projetos comumente
-            usado no desenvolvimento de softwares, embora também seja usado em
-            outros campos, incluindo pesquisa, vendas, marketing e educação. No
-            Scrum, cada pessoa envolvida no projeto assume papéis e funções
-            determinadas dentro do grupo. Entre estes papéis estão:
+            6: (FUNRIO) Sabe-se que todo B é A e que algum C é A. Segue-se
+            necessariamente que:
           </h1>
           <label className="hLabel" htmlFor="q6-option1">
             <input
@@ -420,7 +407,7 @@ export const Prova = () => {
               id="q6-option1"
               value={3}
             />
-            Gerente de projetos, Cliente, Presidente e Squad.
+            todo A é B.
           </label>
 
           <label className="hLabel" htmlFor="q6-option2">
@@ -431,7 +418,7 @@ export const Prova = () => {
               id="q6-option2"
               value={2}
             />
-            Scrum Master, gerente geral, analista de testes e programadores.
+            algum C é B.
           </label>
 
           <label className="hLabel" htmlFor="q6-option3">
@@ -442,7 +429,7 @@ export const Prova = () => {
               id="q6-option3"
               value={1}
             />
-            Scrum Master, Product Owner (dono do produto), cliente e time Scrum.
+            pelo menos um A é B
           </label>
 
           <label className="hLabel" htmlFor="q6-option4">
@@ -453,7 +440,7 @@ export const Prova = () => {
               id="q6-option4"
               value={4}
             />
-            Cliente, Presidente, Squad e Scrum Master
+            todo A é C
           </label>
 
           <label className="hLabel" htmlFor="q6-option5">
@@ -464,15 +451,17 @@ export const Prova = () => {
               id="q6-option5"
               value={5}
             />
-            Nenhuma das alternativas.
+            nenhum B é C.
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            7: Partindo do pressuposto que todo software precisa preencher
-            requisitos mínimos para ser lançado no mercado, qual é o principal
-            objetivo do profissional de QA em um processo de desenvolvimento?
+            7: (IFRS) Como forma de obter dados sigilosos, é muito comum pessoas
+            receberem um grande número de e-mails em sua caixa postal
+            solicitando dados pessoais e financeiros. Essas mensagens procuram
+            induzir o usuário a acessar páginas que supostamente são de seu
+            “Internet Banking”. Esse cenário constitui uma prática de:
           </h1>
           <label className="hLabel" htmlFor="q7-option1">
             <input
@@ -482,7 +471,7 @@ export const Prova = () => {
               id="q7-option1"
               value={2}
             />
-            Acelerar o desenvolvimento de software
+            DoS
           </label>
 
           <label className="hLabel" htmlFor="q7-option2">
@@ -493,7 +482,7 @@ export const Prova = () => {
               id="q7-option2"
               value={1}
             />
-            Garantir que não haja bugs no software
+            Phishing
           </label>
 
           <label className="hLabel" htmlFor="q7-option3">
@@ -504,7 +493,7 @@ export const Prova = () => {
               id="q7-option3"
               value={3}
             />
-            Minimizar os custos do projeto
+            Scam
           </label>
 
           <label className="hLabel" htmlFor="q7-option4">
@@ -515,7 +504,7 @@ export const Prova = () => {
               id="q7-option4"
               value={4}
             />
-            Criar documentação detalhada do software
+            Publishing
           </label>
 
           <label className="hLabel" htmlFor="q7-option5">
@@ -526,18 +515,20 @@ export const Prova = () => {
               id="q7-option5"
               value={5}
             />
-            Melhorar a colaboração entre equipes
+            Pote de mel
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            8: Para que um computador, notebook ou celular possam executar todas
-            as suas funções, ele conta com um sistema operacional, ou seja, um
-            software, ou um conjunto de softwares, que tem como papel gerenciar
-            e administrar todos os recursos presentes em um sistema e servir de
-            interface entre usuário e computador. São exemplos de sistema
-            operacional, EXCETO:
+            8: (Enem) Jogar baralho é uma atividade que estimula o raciocínio.
+            Um jogo tradicional é a Paciência, que utiliza 52 cartas.
+            Inicialmente são formadas sete colunas com as cartas. A primeira
+            coluna tem uma carta, a segunda tem duas cartas, a terceira tem três
+            cartas, a quarta tem quatro cartas, e assim sucessivamente até a
+            sétima coluna, a qual tem sete cartas, e o que sobra forma o monte,
+            que são as cartas não utilizadas nas colunas. <br /> A quantidade de
+            cartas que forma o monte é
           </h1>
           <label className="hLabel" htmlFor="q8-option1">
             <input
@@ -547,7 +538,7 @@ export const Prova = () => {
               id="q8-option1"
               value={3}
             />
-            Windows e macOS
+            21.
           </label>
 
           <label className="hLabel" htmlFor="q8-option2">
@@ -556,9 +547,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionEight")}
               id="q8-option2"
-              value={2}
+              value={1}
             />
-            Linux Ubuntu e Android
+            24
           </label>
 
           <label className="hLabel" htmlFor="q8-option3">
@@ -567,9 +558,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionEight")}
               id="q8-option3"
-              value={1}
+              value={2}
             />
-            Brave e Android
+            26
           </label>
 
           <label className="hLabel" htmlFor="q8-option4">
@@ -580,7 +571,7 @@ export const Prova = () => {
               id="q8-option4"
               value={4}
             />
-            ChromeOS e Windows
+            28
           </label>
 
           <label className="hLabel" htmlFor="q8-option5">
@@ -591,17 +582,19 @@ export const Prova = () => {
               id="q8-option5"
               value={5}
             />
-            Linux Ubuntu e iOS
+            31
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            9: Uma das comodidades proporcionadas pela internet, seja para
-            trabalho, lazer ou estudo, é a possibilidade de transferência
-            instantânea de dados para e de qualquer lugar do planeta. As ações
-            de mandar e receber arquivos via dispositivo conectado à internet
-            recebem, respectivamente, os nomes de:
+            9: (FGV/TCE-SE) Duas tartarugas estavam juntas e começaram a
+            caminhar em linha reta em direção a um lago distante. A primeira
+            tartaruga percorreu 30 metros por dia e demorou 16 dias para chegar
+            ao lago. A segunda tartaruga só conseguiu percorrer 20 metros por
+            dia e, portanto, chegou ao lago alguns dias depois da primeira.
+            Quando a primeira tartaruga chegou ao lago, o número de dias que ela
+            teve que esperar para a segunda tartaruga chegar foi:
           </h1>
           <label className="hLabel" htmlFor="q9-option1">
             <input
@@ -609,9 +602,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionNine")}
               id="q9-option1"
-              value={4}
+              value={1}
             />
-            Pix e e-mail
+            8
           </label>
 
           <label className="hLabel" htmlFor="q9-option2">
@@ -622,7 +615,7 @@ export const Prova = () => {
               id="q9-option2"
               value={3}
             />
-            Wi-fi e download
+            9
           </label>
 
           <label className="hLabel" htmlFor="q9-option3">
@@ -633,7 +626,7 @@ export const Prova = () => {
               id="q9-option3"
               value={2}
             />
-            E-mail e HTTP
+            10
           </label>
 
           <label className="hLabel" htmlFor="q9-option4">
@@ -642,9 +635,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionNine")}
               id="q9-option4"
-              value={1}
+              value={4}
             />
-            Upload e download
+            12
           </label>
 
           <label className="hLabel" htmlFor="q9-option5">
@@ -655,19 +648,18 @@ export const Prova = () => {
               id="q9-option5"
               value={5}
             />
-            Upload e link
+            15
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            10: No mercado de tecnologia, notamos cada vez mais a preferência de
-            profissionais em trabalhar remotamente, permitindo que atendam
-            clientes em diferentes cidades e países, evitando assim custos com
-            deslocamento e outras questões do trabalho presencial. Para realizar
-            reuniões online, muitas vezes utiliza-se ferramentas como: Zoom,
-            Skype, Google Meet. Qual das seguintes opções descreve uma
-            característica exclusiva do Google Meet:
+            10: (IFES) Recentemente, vários sites de instituições ligadas ao
+            governo brasileiro foram alvos de ataques. A técnica utilizada é
+            conhecida por produzir um elevado número de solicitações de serviços
+            com o objetivo de retardar as respostas às solicitações legítimas e
+            causar a indisponibilidade do serviço. O método de ataque descrito é
+            conhecido como:
           </h1>
           <label className="hLabel" htmlFor="q10-option1">
             <input
@@ -675,9 +667,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionTen")}
               id="q10-option1"
-              value={1}
+              value={2}
             />
-            Integração com calendários Google
+            Cavalo de Tróia
           </label>
 
           <label className="hLabel" htmlFor="q10-option2">
@@ -686,9 +678,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionTen")}
               id="q10-option2"
-              value={2}
+              value={1}
             />
-            Possibilidade de planos de fundo virtuais
+            Negação de serviço (DoS)
           </label>
 
           <label className="hLabel" htmlFor="q10-option3">
@@ -699,7 +691,7 @@ export const Prova = () => {
               id="q10-option3"
               value={3}
             />
-            Suporte a chamadas telefônicas
+            Porta de entrada
           </label>
 
           <label className="hLabel" htmlFor="q10-option4">
@@ -710,7 +702,7 @@ export const Prova = () => {
               id="q10-option4"
               value={4}
             />
-            Gravação automática do áudio das reuniões
+            Engenharia Social
           </label>
 
           <label className="hLabel" htmlFor="q10-option5">
@@ -721,17 +713,17 @@ export const Prova = () => {
               id="q10-option5"
               value={5}
             />
-            Nenhuma das opções
+            Spam
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            11: O profissional de TI (tecnologia da informação) possui uma vasta
-            área de atuação profissional, podendo exercer diversas funções,
-            dependendo do seu conhecimento técnico, escolaridade, experiência,
-            etc. São exemplos de áreas em que um profissionais de TI pode atuar,
-            EXCETO:
+            11: (IFRN 2023) Um arquivo JSON (JavaScript Object Notation) é um
+            padrão aberto para troca de dados entre sistemas. Para assegurar o
+            uso adequado desse tipo de arquivo, foi criada a linguagem
+            declarativa JSON Schema. Sobre o conceito de JSON Schema é correto
+            afirmar:
           </h1>
           <label className="hLabel" htmlFor="q11-option1">
             <input
@@ -741,7 +733,7 @@ export const Prova = () => {
               id="q11-option1"
               value={3}
             />
-            Ciência de dados e administração de redes
+            Cria uma representação visual dos dados JSON
           </label>
 
           <label className="hLabel" htmlFor="q11-option2">
@@ -750,9 +742,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionEleven")}
               id="q11-option2"
-              value={2}
+              value={1}
             />
-            Desenvolvimento de sistemas e segurança cibernética
+            Descreve a estrutura e as restrições dos dados JSON
           </label>
 
           <label className="hLabel" htmlFor="q11-option3">
@@ -761,9 +753,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionEleven")}
               id="q11-option3"
-              value={1}
+              value={2}
             />
-            Contabilidade e programação
+            Comprime os dados JSON para economizar espaço de armazenamento
           </label>
 
           <label className="hLabel" htmlFor="q11-option4">
@@ -774,25 +766,17 @@ export const Prova = () => {
               id="q11-option4"
               value={4}
             />
-            Testes de software e desenvolvimento mobile
-          </label>
-
-          <label className="hLabel" htmlFor="q11-option5">
-            <input
-              className="inputWidth"
-              type="radio"
-              {...register("questionEleven")}
-              id="q11-option5"
-              value={5}
-            />
-            UX Design e UI Design
+            Encripta os dados JSON para protegê-los contra acessos não
+            autorizados.
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            12: Complete a sentença com o próximo elemento da sequência 1, 1, 2,
-            3, 5, 8, __
+            12: (IFRN 2023) Os requisitos de software são descrição dos recursos
+            e funcionalidades do sistema alvo e são comumente classificados em
+            requisitos funcionais e requisitos não funcionais. Sobre os
+            requisitos não funcionais sabe-se que:
           </h1>
           <label className="hLabel" htmlFor="q12-option1">
             <input
@@ -800,9 +784,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionTwelve")}
               id="q12-option1"
-              value={5}
+              value={1}
             />
-            11
+            descrevem as restrições e características de qualidade do software.
           </label>
 
           <label className="hLabel" htmlFor="q12-option2">
@@ -813,7 +797,7 @@ export const Prova = () => {
               id="q12-option2"
               value={4}
             />
-            58
+            definem as etapas do ciclo de vida do software.
           </label>
 
           <label className="hLabel" htmlFor="q12-option3">
@@ -824,7 +808,7 @@ export const Prova = () => {
               id="q12-option3"
               value={3}
             />
-            8
+            definem as interfaces de comunicação com outros sistemas
           </label>
 
           <label className="hLabel" htmlFor="q12-option4">
@@ -835,25 +819,22 @@ export const Prova = () => {
               id="q12-option4"
               value={2}
             />
-            0
-          </label>
-
-          <label className="hLabel" htmlFor="q12-option5">
-            <input
-              className="inputWidth"
-              type="radio"
-              {...register("questionTwelve")}
-              id="q12-option5"
-              value={1}
-            />
-            13
+            detalham as funcionalidades específicas do software
           </label>
         </div>
         <br />
         <div className="options">
           <h1 style={{ fontSize: "1rem" }}>
-            13: Complete a sentença com o próximo elemento da sequência 0, 1, 4,
-            9, 16, 25, 36, __
+            13: (IFBA2020) HTML é uma linguagem de marcação que descreve a estrutura
+            de um documento. Essa linguagem é utilizada para desenvolver páginas
+            Web. Sobre o HTML seguem-se três afirmações: <br /> I - Páginas
+            criadas em HTML sempre são visualizadas da mesma forma em
+            navegadores diferentes, mesmo quando executados em plataformas de
+            hardware diferentes. <br /> II - As páginas escritas em HTML são
+            arquivos de texto no formato ASCII. <br /> III - O HTML possui um
+            conjunto previamente definido de tags, no entanto o usuário pode
+            criar as suas próprias tags. <br /> É correto apenas o que se afirma
+            em
           </h1>
           <label className="hLabel" htmlFor="q13-option1">
             <input
@@ -863,7 +844,7 @@ export const Prova = () => {
               id="q13-option1"
               value={4}
             />
-            49
+            I.
           </label>
 
           <label className="hLabel" htmlFor="q13-option2">
@@ -872,9 +853,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionThirteen")}
               id="q13-option2"
-              value={3}
+              value={1}
             />
-            63
+            II.
           </label>
 
           <label className="hLabel" htmlFor="q13-option3">
@@ -885,7 +866,7 @@ export const Prova = () => {
               id="q13-option3"
               value={2}
             />
-            99
+            III.
           </label>
 
           <label className="hLabel" htmlFor="q13-option4">
@@ -894,9 +875,9 @@ export const Prova = () => {
               type="radio"
               {...register("questionThirteen")}
               id="q13-option4"
-              value={1}
+              value={3}
             />
-            45
+            I e II.
           </label>
 
           <label className="hLabel" htmlFor="q13-option5">
@@ -907,7 +888,7 @@ export const Prova = () => {
               id="q13-option5"
               value={5}
             />
-            89
+            II e III.
           </label>
         </div>
         <br />
@@ -923,6 +904,7 @@ export const Prova = () => {
             furado de um carro, quais seriam as alternativas que preencheriam,
             de forma lógica, as lacunas em branco?
           </h1>
+          
           <img
             style={{
               width: "100%",
@@ -930,8 +912,7 @@ export const Prova = () => {
             src="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/prova.jpg"
             alt="img prova"
           />
-            <br />
-            <br />
+          
           <label className="hLabel" htmlFor="q14-option1">
             <input
               className="inputWidth"
@@ -940,10 +921,11 @@ export const Prova = () => {
               id="q14-option1"
               value={2}
             />
+            
             2 - colocar o estepe; 6 - ligar o carro e voltar à sua rota; 10 -
             pegar as ferramentas necessárias.
           </label>
-          <br />
+<br />
           <label className="hLabel" htmlFor="q14-option2">
             <input
               className="inputWidth"

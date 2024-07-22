@@ -103,7 +103,7 @@ export const Footer = () => {
         </div>
         <hr />
         <div className="footerSub">
-          <p>© Instituto Joga Junto 2023. Todos os direitos reservados.</p>
+          <p>© Instituto Joga Junto 2024. Todos os direitos reservados.</p>
         </div>
       </Container>
     </footer>
