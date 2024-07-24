@@ -157,6 +157,7 @@ export const FormPage = () => {
   const {
     register,
     handleSubmit,
+    watch,
     setValue,
     formState: { errors },
   } = useForm<FormSchemaType>({
@@ -221,6 +222,7 @@ export const FormPage = () => {
       setCepData(cepData);
       setValue("state", cepData.uf);
       setValue("adress", cepData.logradouro);
+      setValue("city", cepData.localidade);
     } catch (error) {
       console.log("CEP não encontrado");
     }
@@ -238,7 +240,7 @@ export const FormPage = () => {
     formData.append("last_name", data.last_name);
     formData.append("social_name", data.socialName ?? "");
     formData.append("city", data.city);
-    formData.append("adress", data.adress);
+    formData.append("address", data.adress);
     formData.append("email", data.email);
     formData.append("date_of_birth", data.date);
     formData.append("living_uf", data.state.name);
@@ -265,7 +267,7 @@ export const FormPage = () => {
 
       if (data.socialName && data.socialName.length > 1) {
         localStorage.setItem("username", data.socialName);
-        window.location.reload();
+      
       }
       setIsTabEnabledSocial(true);
       setIsTabEnabledDate(true);
@@ -486,8 +488,8 @@ export const FormPage = () => {
                               <div>
                                 <span>RG *</span>
                               </div>
-                              <InputMask
-                                mask="99.999.999-99"
+                              <InputText
+                             
                                 {...register("rg", { required: true })}
                                 placeholder="__.___.___-__"
                                 className={errors.rg ? "p-invalid" : ""}
@@ -656,7 +658,7 @@ export const FormPage = () => {
                                 {...register("city")}
                                 placeholder="Cidade"
                                 className={errors.city ? "p-invalid" : ""}
-                                defaultValue={cepData?.localidade}
+                                defaultValue={watch('city')}
                               />
                             </div>
 

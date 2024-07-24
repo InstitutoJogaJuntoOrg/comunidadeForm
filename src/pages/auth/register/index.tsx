@@ -56,8 +56,8 @@ export const RegisterPage = () => {
         }
       })
       .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          let response = error.response.data.message;
+        if (error.response) {
+          let response = error.response.data.error;
           console.error("Erro ao cadastrar o usuário:", response);
           toast.error(response);
         } else {

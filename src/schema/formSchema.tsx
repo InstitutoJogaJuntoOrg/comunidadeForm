@@ -16,7 +16,7 @@ export const FormSchema = z.object({
   first_name: z.string().min(1, "Campo obrigatório"),
   date: z.any(),
   last_name: z.string().min(1, "Campo obrigatório"),
-  city: z.string().min(4, "Campo obrigatório"),
+  city: z.any(),
   cep: z.any(),
   adress: z.string().min(1, "Campo obrigatório"),
   country: z.string().min(1, "Campo obrigatório"),
