@@ -78,8 +78,8 @@ export const SocioEconomico = ({
       const socioeconomicData: any = {
         sociadata_physical_disability: data.deficiency,
         average_monthly_income: salario,
-        sociadata_race: data.color,
-        sociadata_gender: data.gender,
+        sociodata_race: data.color,
+        sociodata_gender: data.gender,
         sociodata_sexual_orientation: data.guidance,
         socioeconomic_has_children: Number(data.children),
         education_level: data.schooling,
