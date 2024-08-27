@@ -21,11 +21,11 @@ const MobileMenu = ({ closeMenu }: any) => {
   return (
     <MobileMenuContainer>
       <div>
-        {!user && (
+        {/* {!user && (
           <StyledNavLink to="/login" onClick={closeMenu}>
             Inscrição
           </StyledNavLink>
-        )}
+        )} */}
 
         {user && (
           <StyledNavLink to={user ? "/inscricao" : "/auth"} onClick={closeMenu}>

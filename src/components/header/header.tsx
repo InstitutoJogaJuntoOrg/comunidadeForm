@@ -55,9 +55,9 @@ export const Header = () => {
           />
         </Link>
         <ul className={windowWidth <= 1000 && showLinks ? "hidden" : ""}>
-          {!emailFromLocalStorage && (
+          {/* {!emailFromLocalStorage && (
             <StyledNavLink to="/login">Inscrição</StyledNavLink>
-          )}
+          )} */}
 
           {emailFromLocalStorage && <MyDropdown />}
 

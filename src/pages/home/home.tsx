@@ -13,7 +13,11 @@ export const HomePage = () => {
               fontSize: "2rem",
             }}
           >
-            Turmas abertas!
+            Inscrições encerradas!
+            <p style={{
+              fontSize: '14px',
+              marginLeft: 50,
+            }}>Verifique seu email para atualizações.</p>
           </span>
           <Link
             to="/inscricao"
@@ -22,15 +26,7 @@ export const HomePage = () => {
               textDecoration: "none",
             }}
           >
-            <button
-              className="button-help"
-              style={{
-                cursor: "pointer",
-                textDecoration: "none",
-              }}
-            >
-              Quero participar do curso!
-            </button>
+    
           </Link>
         </div>
 
@@ -41,12 +37,12 @@ export const HomePage = () => {
             gap: "1rem",
           }}
         >
-          <div className="banners">
+          {/* <div className="banners">
             <h3>Processos seletivos</h3>
             <Link to="/inscricao">
               <img src="/aviso.png" alt="" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </HomeContainer>
       <Footer />
