@@ -6,6 +6,7 @@ export const SocioeconomicoSchema = z.object({
   schollName: z
   .any(),
   benefitsName: z.any(),
+  linkedin: z.any(),
   isStuding: z.any(),
   current_course: z.any(),
   schoolName: z.any(),
@@ -60,7 +61,10 @@ export const SocioeconomicoSchema = z.object({
       }),
 
 
-     
+      pessoal_income: z.string({
+        required_error: "messages.required",
+      }).min(1, { message: "messages.required" }),
+
       income: z.string({
         required_error: "messages.required",
       }).min(1, { message: "messages.required" }),

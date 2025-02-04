@@ -10,23 +10,26 @@ export const HomePage = () => {
         <div className="subtitle">
           <span
             style={{
-              fontSize: "2rem",
+              fontSize: "3rem",
             }}
           >
-            Inscrições encerradas!
-            <p style={{
+            Inscrições abertas!
+            {/* <p style={{
               fontSize: '14px',
-              marginLeft: 50,
-            }}>Verifique seu email para atualizações.</p>
+             
+            }}>Verifique seu email para atualizações.</p> */}
           </span>
           <Link
             to="/inscricao"
             style={{
               cursor: "pointer",
               textDecoration: "none",
+              background: "#FCD700",
+              padding: "1rem",
+              borderRadius: '12px'
             }}
           >
-    
+    Inscreva-se
           </Link>
         </div>
 
@@ -37,12 +40,12 @@ export const HomePage = () => {
             gap: "1rem",
           }}
         >
-          {/* <div className="banners">
+          <div className="banners">
             <h3>Processos seletivos</h3>
             <Link to="/inscricao">
-              <img src="/aviso.png" alt="" />
+              <img src="/avisohome.png" alt="" />
             </Link>
-          </div> */}
+          </div>
         </div>
       </HomeContainer>
       <Footer />

@@ -47,15 +47,18 @@ export const ProvaSchema = z.object({
   }),
 
   questionTwelve: z.string().min(1, {
-    message: "A pergunta 11 é obrigatória",
+    message: "A pergunta 12 é obrigatória",
   }),
 
   questionThirteen: z.string().min(1, {
-    message: "A pergunta 11 é obrigatória",
+    message: "A pergunta 13 é obrigatória",
   }),
 
   questionFourteen: z.string().min(1, {
-    message: "A pergunta 11 é obrigatória",
+    message: "A pergunta 14 é obrigatória",
+  }),
+  questionquinze: z.string().min(1, {
+    message: "A pergunta 15 é obrigatória",
   }),
 });
 

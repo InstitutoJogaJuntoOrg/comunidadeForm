@@ -265,14 +265,14 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    width: 100%;
+width: "100%";
     justify-content: start;
  
     @media (max-width: 800px) {
        margin-top: 4rem;
   }
     img {
-      width:25%;
+      width:45%;
       @media (max-width: 800px) {
         width:100%;
   }
