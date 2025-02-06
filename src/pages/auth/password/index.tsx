@@ -43,7 +43,7 @@ export const PasswordReset = () => {
     };
     console.log(errors);
     axios
-      .post(`https://api.jogajuntoinstituto.orgpassword_reset/`, requestData)
+      .post(`https://api.jogajuntoinstituto.org/dashboard/password_reset/`, requestData)
       .then((response) => {
         notifySuccess();
         setTimeout(() => {

@@ -55,8 +55,12 @@ export const LoginPage = () => {
           console.log("Erro de autenticação:", error.response.data.error);
           console.log(data.email);
           console.log(data.password);
-
-          toast.error(error.response.data.error);
+          toast.error(error.response.data.error);        
+        } else if (error.response.status === 500) {
+          console.log("O usuário não existe:", error.response.data.error);
+          console.log(data.email);
+          console.log(data.password);
+          toast.error("Login ou senha inválidos");  
         } else {
           console.error("Erro ao fazer login:", error);
         }
@@ -138,7 +142,7 @@ export const LoginPage = () => {
                 alignItems: "flex-end",
               }}
             >
-              {/* <Register>
+              <Register>
                 <span className="">
                   <span>
                     <Link
@@ -154,7 +158,7 @@ export const LoginPage = () => {
                     </Link>
                   </span>
                 </span>
-              </Register> */}
+              </Register> 
             </div>
 
             <button
