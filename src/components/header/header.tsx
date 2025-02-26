@@ -55,17 +55,17 @@ export const Header = () => {
           />
         </Link>
         <ul className={windowWidth <= 1000 && showLinks ? "hidden" : ""}>
-         {!emailFromLocalStorage && (
+         {/* {!emailFromLocalStorage && (
             <StyledNavLink to="/login">Inscrição</StyledNavLink>
-          )} 
+          )}  */}
 
           {emailFromLocalStorage && <MyDropdown />}
 
-          {emailFromLocalStorage && (
+          {/* {emailFromLocalStorage && (
             <StyledNavLink to={emailFromLocalStorage ? "/inscricao" : "/auth"}>
               Inscrição
             </StyledNavLink>
-          )}
+          )} */}
           <li>
             <a
               style={{

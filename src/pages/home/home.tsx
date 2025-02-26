@@ -13,13 +13,13 @@ export const HomePage = () => {
               fontSize: "3rem",
             }}
           >
-            Inscrições abertas!
-            {/* <p style={{
+            Inscrições Encerradas!
+            <p style={{
               fontSize: '14px',
              
-            }}>Verifique seu email para atualizações.</p> */}
+            }}>Verifique seu email para atualizações.</p>
           </span>
-          <Link
+          {/* <Link
             to="/inscricao"
             style={{
               cursor: "pointer",
@@ -30,10 +30,10 @@ export const HomePage = () => {
             }}
           >
     Inscreva-se
-          </Link>
+          </Link> */}
         </div>
 
-        <div
+        {/* <div
           style={{
             display: "flex",
             flexDirection: "column",
@@ -46,7 +46,7 @@ export const HomePage = () => {
               <img src="/avisohome.png" alt="" />
             </Link>
           </div>
-        </div>
+        </div> */}
       </HomeContainer>
       <Footer />
     </>
