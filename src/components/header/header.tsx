@@ -78,6 +78,18 @@ export const Header = () => {
               Ajuda
             </a>
           </li>
+          <li>
+            <a
+              style={{
+                textDecoration: "none",
+                color: "black",
+              }}
+              href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/CRIT%C3%89RIOS+DE+AVALIA%C3%87%C3%83O+E+SELE%C3%87%C3%83O+-+IJJ.pdf"
+              target={"_blank"}
+            >
+              Transparência 
+            </a>
+          </li>
         </ul>
         <div className="hamburger-icon" onClick={toggleLinks}>
           {showLinks ? <FaTimes /> : <FaBars />}
