@@ -28,7 +28,7 @@ export const HomePage = () => {
            
             }}
             target="_blank"
-            href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/Classifica%C3%A7%C3%A3o+Geral+Analise+de+dados+2025.1+-+Instituto+Joga+Junto.pdf"
+            href="https://estaticos-ijj.s3.sa-east-1.amazonaws.com/Classifica%C3%A7%C3%A3o+Geral+Analise+de+dados+2025.1+-+Instituto+Joga+Junto.pdf.pdf"
           >
             <span style={{ color: "black", fontWeight: "bold" }}>
               Confira os resultados
